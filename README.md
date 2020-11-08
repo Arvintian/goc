@@ -1,6 +1,6 @@
 # goc
 
-run c source file like script
+run c source file like script inspire by `go run`.
 
 
 Build
