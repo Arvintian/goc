@@ -12,5 +12,5 @@ make build
 Usage
 
 ```
-goc [build flags] c files [arguments...]
+goc [gcc build flags] c files [arguments...]
 ```
