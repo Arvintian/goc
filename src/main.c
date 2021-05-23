@@ -93,13 +93,14 @@ int main(int argc, char *argv[])
         printf("args error can't find c files\n");
         return -1;
     }
-    char *build_argv[build_argv_len + 4];
+    char *build_argv[build_argv_len + 5];
     char *exec_argv[exec_argv_len + 2];
     char *exe = get_rand_name(12);
     build_argv[0] = "gcc";
     build_argv[build_argv_len + 1] = "-o";
     build_argv[build_argv_len + 2] = exe;
-    build_argv[build_argv_len + 3] = NULL;
+    build_argv[build_argv_len + 3] = "-lpthread";
+    build_argv[build_argv_len + 4] = NULL;
     exec_argv[0] = exe;
     exec_argv[exec_argv_len + 1] = NULL;
     for (int i = 1; i < argc; i++)
