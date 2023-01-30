@@ -25,7 +25,20 @@ int compiler(char *argv[])
 
 int run(const char *filename, char *argv[])
 {
-    return execv(filename, argv);
+
+    pid_t pid = fork();
+    if (pid < 0)
+    {
+        return -1;
+    }
+    else if (pid == 0)
+    {
+        return execv(filename, argv);
+    }
+    else
+    {
+        return waitpid(pid, NULL, 0);
+    }
 }
 
 char *get_rand_name(int len)
