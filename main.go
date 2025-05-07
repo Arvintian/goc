@@ -26,6 +26,7 @@ func getRandName(llen int) (string, error) {
 }
 
 func compile(args []string) error {
+	fmt.Printf("build with args %v\n", args)
 	cmd := exec.Command("gcc", args...)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
@@ -36,10 +37,7 @@ func compile(args []string) error {
 }
 
 func run(filename string, args []string) error {
-	if len(args) == 0 {
-		return nil
-	}
-
+	fmt.Printf("run with args %v\n", args)
 	cmd := exec.Command(filename, args...)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
@@ -71,6 +69,12 @@ func main() {
 		// 非.c文件作为运行参数
 		if isCFile {
 			execArgs = append(execArgs, arg)
+		} else {
+			if arg == "-o" {
+				fmt.Println("goc can't use -o build flags")
+				os.Exit(1)
+			}
+			buildArgs = append(buildArgs, arg)
 		}
 	}
 
