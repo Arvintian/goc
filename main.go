@@ -51,7 +51,7 @@ func run(filename string, args []string) error {
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("Usage: goc file1.c [options] [args]")
+		fmt.Println("Usage: goc [build options] file1.c [run args]")
 		os.Exit(1)
 	}
 
