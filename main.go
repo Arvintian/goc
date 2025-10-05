@@ -39,6 +39,7 @@ func compile(args []string) error {
 func run(filename string, args []string) error {
 	fmt.Printf("run with args %v\n", args)
 	cmd := exec.Command(filename, args...)
+	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	if err := cmd.Run(); err != nil {
